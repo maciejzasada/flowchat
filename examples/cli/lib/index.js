@@ -1,24 +1,33 @@
 import { Flowchat, Input } from 'flowchat';
 import readline from 'readline';
 
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const bot = new Flowchat();
 
-/* Do what you want with the output */
-bot.output.subscribe(output => {
-  console.log(`Bot: ${output.text}`);
+/* Input is an observable that you can rewire and map easily */
+bot.setInput(
+  bot.input
+  .map(text => new Input({ text: text }))
+);
+
+// bot.flow('/hello', (input) => {
+
+// });
+
+/* The output is an observable. Map it easily and subscribe to it */
+bot.output
+.map(output => output.text)
+.subscribe(text => {
+  console.log(`Bot: ${text}`);
+  rl.prompt();
 });
 
 function main() {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-
   console.log('\n*** Press CRTL+C to end the chat ***\n');
   rl.setPrompt('you: ');
   rl.prompt();
   rl.on('line', function(line) {
-    bot.input(new Input({ text: line }))
-      .then(() => {
-        rl.prompt();
-      });
+    bot.input.onNext(line);
   });
 }
 
