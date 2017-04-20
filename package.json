@@ -1,0 +1,40 @@
+{
+  "name": "flowchat",
+  "description": "",
+  "version": "0.0.1",
+  "author": "Maciej Zasada <hello@maciejzasada.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maciejzasada/flowchat.git"
+  },
+  "bugs": "http://github.com/maciejzasada/flowchat/issues",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "dependencies": {
+    "babel-regenerator-runtime": "^6.3.13",
+    "babel-runtime": "^6.3.19"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.4",
+    "babel-eslint": "^4.0.0",
+    "babel-plugin-syntax-async-functions": "^6.1.18",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
+    "babel-plugin-transform-es2015-for-of": "^6.3.13",
+    "babel-plugin-transform-regenerator": "^6.4.4",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015-node4": "^2.1.1",
+    "eslint": "^1.10.3",
+    "istanbul": "^0.4.1",
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "prepublish": "npm run compile",
+    "test": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape test/*.js",
+    "compile": "babel --out-dir dist lib/**.js",
+    "lint": "eslint lib",
+    "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js",
+    "example:cli": "npm run compile && node examples/cli"
+  },
+  "main": "./dist/lib"
+}
