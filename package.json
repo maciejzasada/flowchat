@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "babel-regenerator-runtime": "^6.3.13",
-    "babel-runtime": "^6.3.19"
+    "babel-runtime": "^6.3.19",
+    "rx-lite": "^4.0.8"
   },
   "devDependencies": {
     "babel-cli": "^6.1.4",
@@ -24,6 +25,7 @@
     "babel-plugin-transform-regenerator": "^6.4.4",
     "babel-plugin-transform-runtime": "^6.3.13",
     "babel-preset-es2015-node4": "^2.1.1",
+    "babel-preset-es2015-node6": "^0.4.0",
     "eslint": "^1.10.3",
     "istanbul": "^0.4.1",
     "tape": "^4.2.2"
@@ -34,7 +36,7 @@
     "compile": "babel --out-dir dist lib/**.js",
     "lint": "eslint lib",
     "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js",
-    "example:cli": "npm run compile && node examples/cli"
+    "example:cli": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape examples/cli"
   },
   "main": "./dist/lib"
 }
