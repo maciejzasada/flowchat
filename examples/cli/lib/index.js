@@ -7,7 +7,7 @@ const bot = new Flowchat();
 /* Input is an observable that you can rewire and map easily */
 bot.setInput(
   bot.input
-  .map(text => `Human says: ${text}`)
+  .map(text => new Input({ text: text }))
 );
 
 // bot.flow('/hello', (input) => {
@@ -16,7 +16,7 @@ bot.setInput(
 
 /* The output is an observable. Map it easily and subscribe to it */
 bot.output
-.map(output => `Bot says: ${output}`)
+.map(output => output.text)
 .subscribe(text => {
   console.log(`Bot: ${text}`);
   rl.prompt();
