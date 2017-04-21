@@ -1,0 +1,34 @@
+{
+  "name": "flowchat-example-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/lib",
+  "scripts": {
+    "start": "babel-node ./dist",
+    "prepublish": "npm run compile",
+    "compile": "babel --out-dir dist lib/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-regenerator-runtime": "^6.3.13",
+    "babel-runtime": "^6.3.19",
+    "redux-saga": "^0.14.7",
+    "rx-lite": "^4.0.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.4",
+    "babel-eslint": "^4.0.0",
+    "babel-plugin-syntax-async-functions": "^6.1.18",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
+    "babel-plugin-transform-es2015-for-of": "^6.3.13",
+    "babel-plugin-transform-regenerator": "^6.4.4",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015-node4": "^2.1.1",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "eslint": "^1.10.3",
+    "istanbul": "^0.4.1",
+    "tape": "^4.2.2"
+  }
+}
