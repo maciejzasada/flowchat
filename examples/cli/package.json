@@ -6,14 +6,16 @@
   "scripts": {
     "start": "babel-node ./dist",
     "prepublish": "npm run compile",
-    "compile": "babel --out-dir dist lib/**.js",
+    "compile": "babel --out-dir dist lib/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "babel-regenerator-runtime": "^6.3.13",
-    "babel-runtime": "^6.3.19"
+    "babel-runtime": "^6.3.19",
+    "redux-saga": "^0.14.7",
+    "rx-lite": "^4.0.8"
   },
   "devDependencies": {
     "babel-cli": "^6.1.4",
