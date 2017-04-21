@@ -5,6 +5,7 @@
   "plugins": [
     "transform-runtime",
     "transform-regenerator",
+    "transform-object-rest-spread",
     "syntax-async-functions",
     "transform-es2015-for-of"
   ]

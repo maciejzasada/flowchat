@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node ./dist",
     "prepublish": "npm run compile",
-    "compile": "babel --out-dir dist lib/**/*.js",
+    "compile": "babel --out-dir dist lib/*.js lib/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "babel-plugin-syntax-async-functions": "^6.1.18",
     "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
     "babel-plugin-transform-es2015-for-of": "^6.3.13",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-regenerator": "^6.4.4",
     "babel-plugin-transform-runtime": "^6.3.13",
     "babel-preset-es2015-node4": "^2.1.1",

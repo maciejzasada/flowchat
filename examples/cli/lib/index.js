@@ -2,7 +2,8 @@ import { Flowchat, Input } from 'flowchat';
 import readline from 'readline';
 
 import router from './routing/basicRouter';
-import helloIntents from './intents/helloIntents';
+import { helloReducer } from './redux/hello';
+import { helloSaga } from './sagas/hello';
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const bot = new Flowchat();
@@ -16,11 +17,7 @@ bot.setInput(
   .concatAll()
 );
 
-bot.intent('/hello', helloIntents);
-
-bot.intent('*', function* (input, send, receive) {
-  yield send('I don\'t know what to do with this message');
-});
+bot.intent('/hello', helloReducer, helloSaga);
 
 /* The output is an observable. Map it easily and subscribe to it */
 bot.output
