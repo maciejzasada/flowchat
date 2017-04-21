@@ -1,9 +1,7 @@
 import { Flowchat, Input } from 'flowchat';
 import readline from 'readline';
 
-import router from './routing/basicRouter';
-import { helloReducer } from './redux/hello';
-import { helloSaga } from './sagas/hello';
+import { helloFlow } from './flows/helloFlow';
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const bot = new Flowchat();
@@ -13,11 +11,9 @@ const userId = Math.round(Math.random() * 999);
 bot.setInput(
   bot.input
   .map(text => new Input({ text: text, sessionId: userId }))
-  .map(router)
-  .concatAll()
 );
 
-bot.intent('/hello', helloReducer, helloSaga);
+bot.flow('/hello', ...helloFlow);
 
 /* The output is an observable. Map it easily and subscribe to it */
 bot.output
