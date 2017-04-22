@@ -1,4 +1,4 @@
-import { Flowchat, Input } from 'flowchat';
+import { Flowchat } from 'flowchat';
 import readline from 'readline';
 
 import { helloFlow } from './flows/helloFlow';
@@ -7,19 +7,11 @@ const rl = readline.createInterface({ input: process.stdin, output: process.stdo
 const bot = new Flowchat();
 const userId = Math.round(Math.random() * 999);
 
-/* Input is an observable that you can rewire and map easily */
-bot.setInput(
-  bot.input
-  .map(text => new Input({ text: text, sessionId: userId }))
-);
-
 bot.flow('/hello', ...helloFlow);
 
-/* The output is an observable. Map it easily and subscribe to it */
 bot.output
-.map(output => `Bot -> ${output.sessionId}: ${output.text}`)
-.subscribe(text => {
-  console.log(text);
+.subscribe(({ state, data, sessionId }) => {
+  console.log(`Bot -> ${sessionId}: ${data}`, state);
   rl.prompt();
 });
 
@@ -28,7 +20,7 @@ function main() {
   rl.setPrompt(`${userId}: `);
   rl.prompt();
   rl.on('line', function(line) {
-    bot.input.onNext(line);
+    bot.input.onNext({ data: line, state: {}, sessionId: userId });
   });
 }
 

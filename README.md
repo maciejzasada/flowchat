@@ -19,14 +19,14 @@ A flow consists of three elements:
 #### `myFlow.js`
 
 ```javascript
-import { put } from 'redux-saga/effects';
+import { send } from 'flowchat';
 
-const activator = (state, input) => Promise.resolve(input.text === 'hello');
+const activator = (input, state) => Promise.resolve(input === 'hello');
 
-const reducer = (state, action) => state.set('saidHello', true);
+const reducer = (input, state) => state.set('saidHello', true);
 
-function* saga (state, action) {
-  yield put('send', 'Hello, user!');
+function* saga (input, state, sessionId) {
+  yield send('Hello, user!', state, sessionId);
 }
 
 export const myFlow = [activator, reducer, saga];

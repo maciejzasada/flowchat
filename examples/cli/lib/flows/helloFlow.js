@@ -1,18 +1,19 @@
-import { call } from 'redux-saga/effects';
+import { send } from 'flowchat';
 
-export const helloActivator = (state, input) => {
-  return Promise.resolve(true);
+export const helloActivator = (input, state) => {
+  console.log('-- running hello activator', input, state);
+  return Promise.resolve(input === 'hello');
 }
 
-export const helloReducer = (state, action) => {
-  console.log('-- running hello reducer');
-  return state;
+export const helloReducer = (input, state) => {
+  console.log('-- running hello reducer', input, state);
+  return Object.assign({}, state, {saidHello: true});
 }
 
-export function* helloSaga(action) {
-  const send = action.payload.send;
-  console.log('-- hello saga called');
-  yield call(send, 'Nice one, buddy with call!');
+export function* helloSaga(input, state, sessionId) {
+  // const send = action.payload.send;
+  console.log('-- hello saga called', input, state, sessionId);
+  yield send('Nice one, buddy with call!', state, sessionId);
 }
 
 export const helloFlow = [helloActivator, helloReducer, helloSaga];
