@@ -12,49 +12,48 @@ Each *flow* determines how the state of the conversation changes and how the bot
 
 A flow consists of three elements:
 
-* `activator` - a promise-based function that determines whether a given flow should run for a given input and a given conversation state.
-* `reducer` - a [redux](https://github.com/reactjs/redux) reducer that specifies how the conversation's [Immutable](https://facebook.github.io/immutable-js/) state should change for a given input.
+* `activator` - a function that determines whether the flow should run for a given input and conversation state. Synchronous or [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based.
+* `reducer` - a [redux](https://github.com/reactjs/redux) reducer that specifies how the conversation state should change for a given input.
 * `saga` - a [redux-saga](https://github.com/redux-saga/redux-saga) that allows running asynchronous code for a given input at ease, including replying to the user or communicating with APIs.
-
-#### `myFlow.js`
-
-```javascript
-import { send } from 'flowchat';
-
-const activator = (input, state) => Promise.resolve(input === 'hello');
-
-const reducer = (input, state) => state.set('saidHello', true);
-
-function* saga (input, state, sessionId) {
-  yield send('Hello, user!', state, sessionId);
-}
-
-export const myFlow = [activator, reducer, saga];
-```
 
 ## I/O
 
 `flowchat` provides [Observable](http://reactivex.io/documentation/observable.html) `input` and `output`, making no assumptions on where the conversation input comes from and where the output should go. Using [Observables](http://reactivex.io/documentation/observable.html) for input and output also allows for their easy and modular mapping.
 
+## The Gist
+
+#### `helloFlow.js`
+
+```javascript
+import { send } from 'flowchat';
+
+const activator = (input, state) => input === 'hello';
+
+const reducer = (input, state) => Object.assign({}, state, { saidHello: true });
+
+function* saga (input, state, sessionId) {
+  yield send('Hello, user!', state, sessionId);
+}
+
+export const helloFlow = [activator, reducer, saga];
+```
+
 #### `app.js`
 
 ```javascript
-import { Flowchat, Input } from 'flowchat';
+import { Flowchat } from 'flowchat';
+
+import { helloFlow } from './helloFlow';
 
 const bot = new Flowchat();
+let sessionId = Math.random();
 
-bot.setInput(
-  bot.input
-  .map(text => new Input({ text, sessionId: userId }))
-);
+bot.flow('/hello', ...helloFlow);
 
-bot.output
-.map(output => `Bot -> ${output.sessionId}: ${output.text}`)
-.subscribe(text => {
-  console.log(text);
-});
+bot.output.subscribe(({ data, state, sessionId }) => console.log(data));
 
-bot.input.onNext('Hello, chat bot!');
+bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });  // logs "Hello, user!"
+
 ```
 
 # Getting started
@@ -68,15 +67,4 @@ or
 
 ```sh
 $ yarn add flowchat
-```
-
-## Usage Example
-
-Suppose you want to create a chat bot that ...
-TODO
-
-#### `bot.js`
-
-```javascript
-// TODO
 ```

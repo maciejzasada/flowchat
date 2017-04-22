@@ -1,9 +1,6 @@
 import { send } from 'flowchat';
 
-export const helloActivator = (input, state) => {
-  console.log('-- running hello activator', input, state);
-  return Promise.resolve(input === 'hello');
-}
+export const helloActivator = (input) => input === 'hello';
 
 export const helloReducer = (input, state) => {
   console.log('-- running hello reducer', input, state);

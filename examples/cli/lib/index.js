@@ -10,7 +10,7 @@ const userId = Math.round(Math.random() * 999);
 bot.flow('/hello', ...helloFlow);
 
 bot.output
-.subscribe(({ state, data, sessionId }) => {
+.subscribe(({ data, state, sessionId }) => {
   console.log(`Bot -> ${sessionId}: ${data}`, state);
   rl.prompt();
 });
