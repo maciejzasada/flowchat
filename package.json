@@ -50,9 +50,10 @@
   "scripts": {
     "prepublish": "npm run compile",
     "test": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape test/*.js",
-    "compile": "babel --out-dir dist lib/**.js",
+    "compile": "rm -rf dist && babel --out-dir dist lib/**.js lib/**/*.js",
     "lint": "eslint lib",
-    "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js",
+    "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "example:cli": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape examples/cli"
   },
   "main": "./dist/lib"

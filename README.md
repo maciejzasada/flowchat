@@ -21,7 +21,7 @@ A flow consists of three elements:
 
 ## I/O
 
-`flowchat` provides [Observable](http://reactivex.io/documentation/observable.html) `input` and `output`, making no assumptions on where the conversation input comes from and where the output should go. Using [Observables](http://reactivex.io/documentation/observable.html) for input and output also allows for their easy and modular mapping.
+`flowchat` provides [Subject](http://reactivex.io/documentation/subject.html) `input`, `output` and `state`, making no assumptions on where the conversation input comes from and where the output should go, as well as how you persist the conversation state. Using [Subject](http://reactivex.io/documentation/subject.html) for input and output also allows for their easy and modular mapping.
 
 ## The Gist
 
@@ -53,9 +53,12 @@ let sessionId = Math.random();
 
 bot.flow('/hello', ...helloFlow);
 
-bot.output.subscribe(({ data, state, sessionId }) => console.log(data));
+bot.state.subscribe(newState => console.log('state:', newState));
+bot.output.subscribe(({ data, sessionId }) => console.log('data:', data));
 
-bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });  // logs "Hello, user!"
+bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });
+// logs "state: { saidHello: true }"
+// logs "Hello, user!"
 
 ```
 
