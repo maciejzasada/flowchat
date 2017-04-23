@@ -2,8 +2,8 @@
 
 [![Join the chat at https://gitter.im/flowchat/github](https://badges.gitter.im/flowchat/github.svg)](https://gitter.im/flowchat/github?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://img.shields.io/npm/v/flowchat.svg?style=flat-square)](https://www.npmjs.com/package/flowchat)
-[![Build Status](https://travis-ci.org/maciejzasada/flowchat.svg?branch=develop)](https://travis-ci.org/maciejzasada/flowchat)
-[![Coverage Status](https://coveralls.io/repos/github/maciejzasada/flowchat/badge.svg?branch=develop)](https://coveralls.io/github/maciejzasada/flowchat?branch=develop)
+[![Build Status](https://travis-ci.org/maciejzasada/flowchat.svg?branch=master)](https://travis-ci.org/maciejzasada/flowchat)
+[![Coverage Status](https://coveralls.io/repos/github/maciejzasada/flowchat/badge.svg?branch=master)](https://coveralls.io/github/maciejzasada/flowchat?branch=master)
 
 `flowchat` is a modern ES6 reactive framework for building **scalable**, **maintainable** and **testable** chat bots.
 
