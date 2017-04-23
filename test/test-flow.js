@@ -18,4 +18,10 @@ Test('test flow', (t) => {
         t.ok(true);
     });
 
+    t.test('unhandled flow', (t) => {
+        t.plan(1);
+        // TODO: implement
+        t.ok(true);
+    });
+
 });
