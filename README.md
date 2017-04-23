@@ -54,7 +54,7 @@ let sessionId = Math.random();
 
 bot.flow('/hello', ...helloFlow);
 
-bot.state.subscribe(newState => console.log('state:', newState));
+bot.state.subscribe(({ state, sessionId }) => console.log('state:', newState));
 bot.output.subscribe(({ data, sessionId }) => console.log('data:', data));
 
 bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });
@@ -80,16 +80,12 @@ $ yarn add flowchat
 
 ## Basics concepts
 
-* Getting started
-* Session
-* Creating a Facebook Messenger chat bot
+* Getting started [COMING SOON]
+* Session [COMING SOON]
+* Creating a Facebook Messenger chat bot [COMING SOON]
 
 ## Advanced topics
 
-* Plugging AI
-* Creating a middleware
-* Using with Immutable.js
-
-## API Reference
-
-* [API reference](docs/API.md)
+* Plugging AI [COMING SOON]
+* Creating a middleware [COMING SOON]
+* Using with Immutable.js [COMING SOON]
