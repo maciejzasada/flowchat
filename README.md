@@ -71,6 +71,19 @@ $ yarn add flowchat
 
 # Documentation
 
-## Basics
+## Basics concepts
+
+* Getting started
+* Session
+* Persistence
+* Creating a Facebook Messenger chat bot
 
 ## Advanced topics
+
+* Plugging AI
+* Creating a middleware
+* Using with Immutable.js
+
+## API Reference
+
+* [API reference](docs/API.md)
