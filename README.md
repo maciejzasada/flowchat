@@ -54,7 +54,7 @@ let sessionId = Math.random();
 
 bot.flow('/hello', ...helloFlow);
 
-bot.state.subscribe(newState => console.log('state:', newState));
+bot.state.subscribe(({ state, sessionId }) => console.log('state:', newState));
 bot.output.subscribe(({ data, sessionId }) => console.log('data:', data));
 
 bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });
