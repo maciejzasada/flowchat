@@ -43,7 +43,6 @@
     "babel-preset-es2015-node4": "^2.1.1",
     "babel-preset-es2015-node6": "^0.4.0",
     "coveralls": "^2.13.0",
-    "esdoc": "^1.0.0-alpha.3",
     "eslint": "^1.10.3",
     "istanbul": "^0.4.1",
     "tape": "^4.2.2"
@@ -56,7 +55,7 @@
     "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js",
     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "example:cli": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape examples/cli",
-    "document": "esdoc"
+    "document": "sh scripts/document.sh"
   },
   "main": "./dist/lib"
 }
