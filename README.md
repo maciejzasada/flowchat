@@ -21,7 +21,7 @@ A flow consists of three elements:
 
 ## I/O
 
-`flowchat` provides [Subject](http://reactivex.io/documentation/subject.html) `input`, `output` and `state`, making no assumptions on where the conversation input comes from and where the output should go, as well as how you persist the conversation state. Using [Subject](http://reactivex.io/documentation/subject.html) for input and output also allows for their easy and modular mapping.
+`flowchat` provides [Subject](http://reactivex.io/documentation/subject.html) `input`, `output` and `state`, making no assumptions on where the conversation input comes from and where the output should go, or how you persist the conversation state. Using [Subject](http://reactivex.io/documentation/subject.html) for input, output and state also allows for their easy and modular mapping.
 
 ## The Gist
 
@@ -35,7 +35,7 @@ const activator = (input, state) => input === 'hello';
 const reducer = (input, state) => Object.assign({}, state, { saidHello: true });
 
 function* saga (input, state, sessionId) {
-  yield send('Hello, user!', state, sessionId);
+  yield send('Hello, user!', sessionId);
 }
 
 export const helloFlow = [activator, reducer, saga];
@@ -58,7 +58,7 @@ bot.output.subscribe(({ data, sessionId }) => console.log('data:', data));
 
 bot.input.onNext({ data: 'hello', state: { saidHello: false }, sessionId });
 // logs "state: { saidHello: true }"
-// logs "Hello, user!"
+// logs "data: Hello, user!"
 
 ```
 
@@ -81,7 +81,6 @@ $ yarn add flowchat
 
 * Getting started
 * Session
-* Persistence
 * Creating a Facebook Messenger chat bot
 
 ## Advanced topics
