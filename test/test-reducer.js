@@ -15,7 +15,7 @@ Test('test reducer', (t) => {
         const flow = [activator, reducer, saga];
         const bot = new Flowchat();
         bot.flow('/test', ...flow);
-        bot.state.subscribe(state => {
+        bot.state.subscribe(({ state }) => {
             sessionState = state;
         });
         const sendInput = () => {

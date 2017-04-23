@@ -10,7 +10,7 @@ export const helloReducer = (input, state) => {
 export function* helloSaga(input, state, sessionId) {
   // const send = action.payload.send;
   console.log('-- hello saga called', input, state, sessionId);
-  yield send('Nice one, buddy with call!', state, sessionId);
+  yield send('Nice one, buddy with call!', sessionId);
 }
 
 export const helloFlow = [helloActivator, helloReducer, helloSaga];
