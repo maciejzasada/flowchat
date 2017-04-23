@@ -87,5 +87,6 @@ $ yarn add flowchat
 ## Advanced topics
 
 * Plugging AI [COMING SOON]
+* [i18n](docs/I18N.md)
 * Creating a middleware [COMING SOON]
 * Using with Immutable.js [COMING SOON]
