@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.1.4",
-    "babel-eslint": "^4.0.0",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-syntax-async-functions": "^6.1.18",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
@@ -43,7 +43,7 @@
     "babel-preset-es2015-node4": "^2.1.1",
     "babel-preset-es2015-node6": "^0.4.0",
     "coveralls": "^2.13.0",
-    "eslint": "^1.10.3",
+    "eslint": "^3.19.0",
     "istanbul": "^0.4.1",
     "tape": "^4.2.2"
   },
