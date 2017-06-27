@@ -6,8 +6,14 @@ import { helloFlow } from './flows/helloFlow';
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const bot = new Flowchat();
 const userId = Math.round(Math.random() * 999);
+const states = {};
 
 bot.flow('/hello', ...helloFlow);
+
+bot.state.subscribe(({ state, sessionId, cb }) => {
+  states[sessionId] = state;
+  cb();
+});
 
 bot.output
 .subscribe(({ data, sessionId }) => {
@@ -20,7 +26,10 @@ function main() {
   rl.setPrompt(`${userId}: `);
   rl.prompt();
   rl.on('line', function(line) {
-    bot.input.onNext({ data: line, state: {}, sessionId: userId });
+    if (!states[userId]) {
+      states[userId] = { saidHello: false };
+    }
+    bot.input.onNext({ data: line, state: states[userId], sessionId: userId });
   });
 }
 
