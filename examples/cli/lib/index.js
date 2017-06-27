@@ -10,9 +10,12 @@ const states = {};
 
 bot.flow('/hello', ...helloFlow);
 
-bot.state.subscribe(({ state, sessionId, cb }) => {
-  states[sessionId] = state;
-  cb();
+bot.state.subscribe(({ state, sessionId, wait }) => {
+  const promise = new Promise(resolve => {
+    states[sessionId] = state;
+    setTimeout(resolve, 1000);
+  });
+  wait(promise);
 });
 
 bot.output
