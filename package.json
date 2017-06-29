@@ -1,7 +1,7 @@
 {
   "name": "flowchat",
   "description": "Modern ES6 reactive framework for building scalable, maintainable and testable chat bots",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Maciej Zasada <hello@maciejzasada.com>",
   "keywords": [
     "flowchat",
@@ -38,10 +38,13 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.4.0",
     "babel-plugin-transform-es2015-for-of": "^6.3.13",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-regenerator": "^6.4.4",
     "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-node4": "^2.1.1",
     "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-stage-0": "^6.24.1",
     "coveralls": "^2.13.0",
     "eslint": "^3.19.0",
     "istanbul": "^0.4.1",
@@ -54,7 +57,8 @@
     "lint": "eslint lib",
     "cover": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/istanbul cover node_modules/.bin/tape -- test/*.js",
     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "example:cli": "npm run compile && babel-node --plugins transform-es2015-arrow-functions node_modules/.bin/tape examples/cli",
+    "example:cli": "npm run compile && node examples/cli",
+    "example:facebook-messenger": "npm run compile && node examples/facebook-messenger",
     "document": "bash scripts/document.sh"
   },
   "main": "./dist/lib"

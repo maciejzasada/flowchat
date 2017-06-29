@@ -4,7 +4,7 @@ export const helloActivator = (input) => input === 'hello';
 
 export const helloReducer = (input, state) => {
   console.log('-- running hello reducer', input, state);
-  return Object.assign({}, state, {saidHello: true});
+  return Object.assign({}, state, { saidHello: true });
 }
 
 export function* helloSaga(input, state, sessionId) {
