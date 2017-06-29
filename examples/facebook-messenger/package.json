@@ -26,7 +26,7 @@
     "config": "^1.26.1",
     "crypto": "^0.0.3",
     "express": "^4.15.3",
-    "redux-saga": "^0.14.7",
+    "redux-saga": "^0.15.4",
     "request": "^2.81.0",
     "rx-lite": "^4.0.8"
   },

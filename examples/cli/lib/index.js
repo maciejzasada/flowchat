@@ -1,4 +1,4 @@
-import { Flowchat } from 'flowchat';
+import Flowchat from 'flowchat';
 import readline from 'readline';
 
 import { helloFlow } from './flows/helloFlow';

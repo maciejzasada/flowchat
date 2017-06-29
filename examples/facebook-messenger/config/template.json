@@ -1,5 +1,5 @@
 {
   "messengerAppSecret": "[FILL_IN]",
-  "messengerValidationToken": "[FILL_IN]",
+  "messengerVerifyToken": "[FILL_IN]",
   "messengerPageAccessToken": "[FILL_IN]"
 }
